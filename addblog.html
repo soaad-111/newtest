@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
+
+    <title>Add Blog</title>
+    <script>
+if (localStorage.getItem("admin")!='1' ) {
+
+window.location='index.html';
+}
+
+
+</script>
+  </head>
+  <body>
+
+
+  <div class="container">
+  <div class="row">
+  <div  class="col-lg-12 pt-5">
+  <div class="bg-light p-5">
+  <h1>Add Blog</h1>
+    <form name="addblog1">
+  <div class="form-group">
+    <label for="title">Title</label>
+    <input type="text" class="form-control" name="title" id="title" >
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <textarea class="form-control" name="details" id="details"></textarea>
+    
+  </div>
+ 
+  <button type="button" class="btn btn-primary"   onclick="addblog(this.form)">Add</button>
+</form>
+</div>
+</div>
+</div>
+</div>
+
+<script>
+
+function addblog(form){
+	var title = form.title.value;
+	var details = form.details.value
+	 if( title== "" &&  details== "")
+  {
+	  alert("Please fill All fields");
+
+  }
+ else
+ {
+	if(localStorage.getItem('data')==null){
+	old_data	= [];
+	}else{
+		 old_data =JSON.parse(localStorage.getItem('data'));
+	}
+	
+var  new_data = {
+	
+	title : title,
+	details  : details
+	
+	}
+	old_data.push(new_data)
+
+localStorage.setItem('data',JSON.stringify(old_data));
+window.location='blogs.html';
+  }
+ 
+  
+}
+</script>
+ <script src="bootstrap/js/jquery-3.5.1.slim.min.js"  ></script>
+    <script src="bootstrap/js/bootstrap.bundle.min.js"  ></script>
+
+</body>
+</html>
